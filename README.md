@@ -32,9 +32,9 @@ Let's form our neural network function <img src="https://render.githubuserconten
 
 <img src="/figures/fitData.png" height="400"/>
 
-Text
+Here it is training
 
-<img src="/figures/nn(2).png" height="400"/>
+![anim_fps30](https://user-images.githubusercontent.com/38541020/86980829-c2940a80-c139-11ea-90d6-4cd7ff6ba49a.gif)
 
 
 Note: this package is designed to work with the __plot plane in Juno__. If you force it to plot in a gui it will look really weird.
