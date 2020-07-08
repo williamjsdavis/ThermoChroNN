@@ -26,6 +26,12 @@ Text
 
 Text
 
+<img src="/figures/fitData.png" height="400"/>
+
+Text
+
+<img src="/figures/nn(2).png" height="400"/>
+
 
 Note: this package is designed to work with the __plot plane in Juno__. If you force it to plot in a gui it will look really weird.
 
