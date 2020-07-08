@@ -20,6 +20,12 @@ Currently, I have tested the following capabilities:
 - Adding new elements to X,Y arrays in 2d line and scatter plots 
 - Adding new elements to X,Y,Z in 3d line and scatter plots
 
+Text
+
+<img src="/figures/originalData.png" height="400"/>
+
+Text
+
 
 Note: this package is designed to work with the __plot plane in Juno__. If you force it to plot in a gui it will look really weird.
 
@@ -37,8 +43,6 @@ Note: this package is designed to work with the __plot plane in Juno__. If you f
 ### Short example
 
 Here's a video showing an output live-plot from some magnetohydrodynamic calculations:
-
-![exampleSmoothPlot](https://user-images.githubusercontent.com/38541020/78403408-27771c00-75b1-11ea-9bef-063e8612720d.gif)
 
 # TODOs
 - [ ] Add capability to add additional elements to plots.
