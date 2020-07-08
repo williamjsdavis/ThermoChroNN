@@ -1,7 +1,7 @@
 ## He gradient test
 using Flux
-include("helperFunctions.jl")
-include("utils.jl")
+include("src/helperFunctions.jl")
+include("src/utils.jl")
 using .MapInLayer
 
 using Plots

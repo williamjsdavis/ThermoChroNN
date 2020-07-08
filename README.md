@@ -1,6 +1,6 @@
-# SmoothLivePlot.jl
+# ThermoChroNN
 
-`SmoothLivePlot.jl` is a Julia package for creating live-style plots during calculations. 
+`ThermoChroNN` is a Julia package for quantitative thermochronology calculations, using artificial neural networks. 
 
 # Motivation
 
