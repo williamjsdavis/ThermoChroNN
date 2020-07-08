@@ -1,16 +1,14 @@
 # ThermoChroNN
 
-`ThermoChroNN` is a Julia package for quantitative thermochronology calculations, using artificial neural networks. 
+`ThermoChroNN` is a Julia package for quantitative thermochronology calculations, using artificial neural networks. This is a work in progress.
 
 # Motivation
 
-Updating the Juno plot plane during calculations creates new plots on top of the old ones. This produces a flickering effect e.g.:
+Modelling the thermal history of geologic regions is an integral part of tectonic studies, and is key for. In recent decades, due to the availability of data from high precision measurement techniques and computation resources, sophisticated methods have been developed to estimate time–temperature paths of rock samples using fission track, U–Th–He, 4He/3He and vitrinite reflectance data. Two examples of these are: QTQt ([Transdimensional inverse thermal history modeling for quantitative thermochronology, Gallagher (2012)](https://doi.org/10.1029/2011JB008825)), and HeFTy ([Forward and Inverse Modeling of Low-Temperature Thermochronometry Data, Ketcham (2005)](https://doi.org/10.2138/rmg.2005.58.11)). 
 
-- [Can you update a plot in Julia?](https://discourse.julialang.org/t/current-state-of-live-plots-in-atom-juno/30379)
-- [Current State of Live Plots in Atom/Juno?](https://discourse.julialang.org/t/current-state-of-live-plots-in-atom-juno/30379)
-- [Suppress Plot Window when output to animation](https://discourse.julialang.org/t/suppress-plot-window-when-output-to-animation/30724)
+Both QTQt and HeFTy sample a series of points in time–temperature space, and calculate a metric based on this time–temperature path. This metric is based on physical models of how minerals in the rocks respond to temperature over millions of years, including: [multi-kinetic annealing models](https://doi.org/10.2138/am.2007.2281); helium diffusion models with [Radiation Damage Accumulation and Annealing Model (RDAAM)](https://doi.org/10.1016/j.gca.2009.01.015), and others. If the candidate model compares well with the experimental data, then the time–temperature path is a good representation of the "true" time–temperature path. The two methods differ in how the time–temperature parameter space is sampled. HeFTy uses a frequentist p-value approach, and searches for well fitting models from a large number of candidate models. On the other hand, QTQt implements a Markov chain Monte Carlo Bayesian approach to searching the parameter space. While both of these techniques are suitable, I want to explore other methods of solving the inverse problem of estimating time–temperature paths from experimental data.
 
-To smoothly update of plots, I generalised a [solution found by user ckneale](https://discourse.julialang.org/t/current-state-of-live-plots-in-atom-juno/30379/7). It uses [Observables.jl](https://github.com/JuliaGizmos/Observables.jl) and [WebIO.jl](https://github.com/JuliaGizmos/WebIO.jl) so that the plot can listen to changes in its elements.
+One option
 
 Currently, I have tested the following capabilities: 
 - Modifying values in X and/or Y array(s) in scatter and plot
