@@ -15,7 +15,8 @@ gr(show = true)
 function myPlotFun(tforPlot, tDomain, trueTemperature, tempData, initialEstAll, initialEst, finalEstAll, finalEst)
   plot(tforPlot, trueTemperature,
     label = "True",
-    xmirror=true)
+    xmirror=true,
+    legend=:bottomright)
   scatter!(tDomain, tempData, markersize = 5, label = "Data")
   plot!(tforPlot, initialEstAll, color = "green", label = "Original")
   scatter!(tDomain, initialEst, markersize = 5, color = "green", label = "")
@@ -23,6 +24,7 @@ function myPlotFun(tforPlot, tDomain, trueTemperature, tempData, initialEstAll, 
   scatter!(tDomain, finalEst, markersize = 5, color = "red", label = "")
   plot!(xaxis = ("Time, Ma", :flip))
   plot!(yaxis = ("Temperature, C", :flip))
+  plot!(ylims = (0, 110))
   #display(fig)
 end
 
@@ -70,7 +72,7 @@ function main()
 
   # Sample true data
   tDomain = Float32[0.1, 5.3, 15.5, 25.5, 39.9, 45.3, 55.5, 65.5, 89.9, 99.5]
-  data, tempData = makeData(tDomain, 1000)
+  data, tempData = makeData(tDomain, 200)
 
   # Model and initial prediction
   temperatureMap = formModel()
@@ -81,15 +83,19 @@ function main()
   parameters = params(temperatureMap)
   loss(x, y) = Flux.mae(temperatureMap(x), y)
   opt = ADAM(0.1)
+  #anim = Animation()
   evalcb() = begin
     println(loss(data.xs.x...))
     finalEstAll = temperatureMap(tforPlot)
     finalEst = temperatureMap(tDomain)
     # NOTE: Get SmoothLivePlot working with this
     display(myPlotFun(tforPlot, tDomain, trueTemperature, tempData, initialEstAll, initialEst, finalEstAll, finalEst))
+    #frame(anim)
   end
 
   # Start simple training
+  #Flux.train!(loss, parameters, data, opt, cb = Flux.throttle(evalcb, 0.1))
+  #Flux.train!(loss, parameters, data, ADAM(0.01), cb = Flux.throttle(evalcb, 0.1))
   Flux.train!(loss, parameters, data, opt, cb = Flux.throttle(evalcb, 0.1))
   Flux.train!(loss, parameters, data, ADAM(0.01), cb = Flux.throttle(evalcb, 0.1))
 
@@ -97,6 +103,8 @@ function main()
   finalEstAll = temperatureMap(tforPlot)
   finalEst = temperatureMap(tDomain)
   myPlotFun(tforPlot, tDomain, trueTemperature, tempData, initialEstAll, initialEst, finalEstAll, finalEst)
+
+  #gif(anim, "anim_fps30b.gif", fps = 30)
 
 end
 
