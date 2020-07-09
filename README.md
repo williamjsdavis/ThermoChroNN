@@ -20,6 +20,8 @@ We can approximate this function with an artificial neural network, based on som
 
 so that is can model the non-linear map from time to temperature. Through a learning process we can alter parameters θ such that some sort of metric is optimised, similarly to the methods mentioned above. According to the Universal Approximation Theorem from machine learning, if we enough layers and parameters, f(t) can approximate any nonlinear function sufficiently close. 
 
+Another advantage is that it is possible to calculate gradients of the metric with respect to the parameters. In other words, it is very easy to find out what parts of the time–temperature path are the most sensitive to the observed data. This could be useful for determining where the prediction is robust, and investigating why.
+
 Currently, I have only implemented a pathwise comparison metric for the time–temperature path. However I hope to add more physically (and data motivated) loss functions to train the network.
 
 # Example
@@ -28,34 +30,28 @@ Here is an example of the esimation method. Say we have some time–temperature 
 
 <img src="/figures/originalData.png" height="400"/>
 
-Let's form our neural network function <img src="https://render.githubusercontent.com/render/math?math=T = f_{NN}(t, \theta),"> and see if 
-
-<img src="/figures/fitData.png" height="400"/>
-
-Text
+We can form our neural network function <img src="https://render.githubusercontent.com/render/math?math=T = f_{NN}(t, \theta),">. The network can have any structure, but I found that dense layers with increasing numbers of nodes worked well (see example below).
 
 <img src="/figures/nn(2).png" height="400"/>
 
+The network is trained to minimise the pathwise error in temperature at the sampled points. After training, the function fits the data well (see below).
 
-Note: this package is designed to work with the __plot plane in Juno__. If you force it to plot in a gui it will look really weird.
+<img src="/figures/fitData.png" height="400"/>
 
-# Using the package
-1. Import the module using `using SmoothLivePlot`. 
-2. Create a live plot with macro `outPlotObject = @makeLivePlot myPlotFunction(argument1, argument2, ...)`.
-   - Function `myPlotFunction(argument1, argument2, ...)` is a user defined plotting function.
-   - Output `outPlotObject` is a mutable output array of plot features. Its elements are the input aruments of `myPlotFunction()`.
-3. Modify plot elements with function `modifyPlotObject!(outPlotObject, arg2 = newArg2, arg1 = newArg1, ...)`. 
-   - The first argment of `modifyPlotObject!()` must be the mutable output array.
-   - The following argments are optional and named. The name/value pair must be `arg<x> = newArg1`, where `<x>` in the name is an integer that indicates the position of the argument in the original plotting function `myPlotFunction()`. 
-   - E.g. to modify `argument2` to `newArgument2`, use `modifyPlotObject!(outPlotObject, arg2 = newArgument2)`.
-   - The modified arguments do not have to be in any specific order, and are updated at the same time.
+Here it a video of the model during the training process.
 
-### Short example
+![anim_fps30](https://user-images.githubusercontent.com/38541020/86980829-c2940a80-c139-11ea-90d6-4cd7ff6ba49a.gif)
 
-Here's a video showing an output live-plot from some magnetohydrodynamic calculations:
+# Future
+
+I plan to expand on this work by implementing physical models of how the time–temperature path effects the observed data. In addition I want to add other modelling features, such as "bounding boxes" for where there is independent evidence for a point in the time–temperature path.
+
 
 # TODOs
-- [ ] Add capability to add additional elements to plots.
+- [ ] Add physical models to loss function.
+- [ ] Collect sets of well fitting models.
+- [ ] Output gradients with result.
+- [ ] Make test suite.
 - [ ] Benchmark performance.
 
 # Changelog
