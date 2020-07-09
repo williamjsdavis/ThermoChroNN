@@ -18,7 +18,7 @@ We can approximate this function with an artificial neural network, based on som
 
 <img src="https://render.githubusercontent.com/render/math?math=T = f_{NN}(t, \theta),">
 
-so that is can model the non-linear map from time to temperature. Through a learning process we can alter parameters θ such that some sort of metric is optimised, similarly to the methods mentioned above. According to the Universal Approximation Theorem from machine learning, if we enough layers and parameters, f(t) can approximate any nonlinear function sufficiently close. 
+so that is can model the non-linear map from time to temperature. Through a learning process we can alter parameters θ such that some sort of metric is optimised, similarly to the methods mentioned above. According to the Universal Approximation Theorem from machine learning, if we enough layers and parameters, <img src="https://render.githubusercontent.com/render/math?math=f_{NN}(t, \theta)"> can approximate any nonlinear function sufficiently close. 
 
 Another advantage is that it is possible to calculate gradients of the metric with respect to the parameters. In other words, it is very easy to find out what parts of the time–temperature path are the most sensitive to the observed data. This could be useful for determining where the prediction is robust, and investigating why.
 
