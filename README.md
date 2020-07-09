@@ -1,6 +1,6 @@
 # ThermoChroNN
 
-`ThermoChroNN` is a Julia package for quantitative thermochronology calculations, using artificial neural networks. This is a work in progress.
+`ThermoChroNN` is a Julia package for quantitative thermochronology calculations, using machine learning package [`Flux.jl`](https://github.com/FluxML/Flux.jl). This is a work in progress.
 
 # Motivation
 
@@ -22,7 +22,7 @@ so that is can model the non-linear map from time to temperature. Through a lear
 
 Another advantage is that it is possible to calculate gradients of the metric with respect to the parameters. In other words, it is very easy to find out what parts of the time–temperature path are the most sensitive to the observed data. This could be useful for determining where the prediction is robust, and investigating why.
 
-Currently, I have only implemented a pathwise comparison metric for the time–temperature path. However I hope to add more physically (and data motivated) loss functions to train the network.
+The heavy lifting of this package is done by [`Flux.jl`](https://github.com/FluxML/Flux.jl). Currently, I have only implemented a pathwise comparison metric for the time–temperature path. However I hope to add more physically (and data motivated) loss functions to train the network.
 
 # Example
 
