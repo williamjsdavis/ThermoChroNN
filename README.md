@@ -10,7 +10,7 @@ Both QTQt and HeFTy sample a series of points in time–temperature space, and c
 
 # Method
 
-One option is to view the time–temperature (t, T) path as a general function linking every time temperature T = f(t),
+One option is to view the time–temperature (t, T) path as a general function linking every time to a temperature T = f(t),
 
 <img src="https://render.githubusercontent.com/render/math?math=f:\mathbb{R}\rightarrow\mathbb{R}.">
 
