@@ -30,7 +30,7 @@ Here is an example of the esimation method. Say we have some time–temperature 
 
 <img src="/figures/originalData.png" height="400"/>
 
-We can form our neural network function <img src="https://render.githubusercontent.com/render/math?math=T = f_{NN}(t, \theta),">. The network can have any structure, but I found that dense layers with increasing numbers of nodes worked well (see example below).
+We can form our neural network function <img src="https://render.githubusercontent.com/render/math?math=T = f_{NN}(t, \theta)">. The network can have any structure, but I found that dense layers with increasing numbers of nodes worked well (see example below).
 
 <img src="/figures/nn(2).png" height="400"/>
 
