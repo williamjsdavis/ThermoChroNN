@@ -46,6 +46,8 @@ Here it a video of the model during the training process.
 
 I plan to expand on this work by implementing physical models of how the time–temperature path effects the observed data. In addition I want to add other modelling features, such as "bounding boxes" for where there is independent evidence for a point in the time–temperature path.
 
+I'm also interested in combining this with the Julia package [DiffEqFlux](https://github.com/SciML/DiffEqFlux.jl). Advantages include placing physical constraints on the evolution of temperature through time, as well as being able to use the estimated termperature path as a input (or output) of other differential equations.
+
 
 # TODOs
 - [ ] Add physical models to loss function.
