@@ -26,15 +26,15 @@ Currently, I have only implemented a pathwise comparison metric for the time–t
 
 # Example
 
-Here is an example of the esimation method. Say we have some time–temperature path for the last 100 million years which has been sampled at a few points (see figure below).
+Here is an example of the esimation method. Say we have some time–temperature path for the last 100 million years which has been sampled at a few points.
 
 <img src="/figures/originalData.png" height="400"/>
 
-We can form our neural network function <img src="https://render.githubusercontent.com/render/math?math=T = f_{NN}(t, \theta)">. The network can have any structure, but I found that dense layers with increasing numbers of nodes worked well (see example below).
+We can form our neural network function <img src="https://render.githubusercontent.com/render/math?math=T = f_{NN}(t, \theta)">. The network can have any structure, but I found that dense layers with increasing numbers of nodes worked well.
 
 <img src="/figures/nn(2).png" height="400"/>
 
-The network is trained to minimise the pathwise error in temperature at the sampled points. After training, the function fits the data well (see below).
+The network is trained to minimise the pathwise error in temperature at the sampled points. After training, the function fits the data well.
 
 <img src="/figures/fitData.png" height="400"/>
 
